@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "src/app/globals.css"
+        ],
+        "createdAt": "2026-11-20T20:36:16.423Z",
+        "reason": "Plotter sheet surface: the two-axis grid is the material of the drawing, used only inside the 3D plot frame."
+      }
+    ]
+  }
+}

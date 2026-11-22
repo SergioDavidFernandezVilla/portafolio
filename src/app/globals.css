@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #17130f;
+  --color-ink-soft: #1f1914;
+  --color-ink-raised: #27201a;
+  --color-paper: #f2eadb;
+  --color-paper-dim: #b8ad9c;
+  --color-oxide: #d2603c;
+  --color-oxide-deep: #a74628;
+  --color-rule: #3a3129;
+  --font-display: var(--font-bricolage);
+  --font-sans: var(--font-archivo);
+  --font-mono: var(--font-azeret);
+}
+
+:root {
+  color-scheme: dark;
+  --sheet-line: rgb(242 234 219 / 0.055);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-rule) var(--color-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  content: "";
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background-color: var(--color-oxide);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-oxide);
+  outline-offset: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-rule);
+  border: 2px solid var(--color-ink);
+}
+
+.sheet-grid {
+  background-image:
+    linear-gradient(to right, var(--sheet-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--sheet-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.plot-frame {
+  position: relative;
+}
+
+.plot-frame::before,
+.plot-frame::after {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  content: "";
+  border-color: var(--color-oxide);
+  border-style: solid;
+}
+
+.plot-frame::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1px 0 0 1px;
+}
+
+.plot-frame::after {
+  right: -1px;
+  bottom: -1px;
+  border-width: 0 1px 1px 0;
+}
+
+.plate-accent {
+  opacity: 0.35;
+  transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .plate-accent,
+.group:focus-within .plate-accent {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
